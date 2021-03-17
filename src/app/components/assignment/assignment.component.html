@@ -1,0 +1,146 @@
+<div class="assignment-page">
+  <img class="assignment-page-image" src="../../../assets/image/Background.png" />
+  <div class="assignment-form">
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+      <div class="form-group">
+        <label for="subscriptionList">Please Select Subscription</label>
+        <cvui-select
+          ngModel
+          name="subscriptionList"
+          id="subscriptionList"
+          type="filter"
+          [(selectedValues)]="selectedSubscription"
+          (selectedValuesChange)="getReliabilityRequirements()"
+          *ngIf="istargetApp"
+        >
+          <cvui-select-option *ngFor="let item of subscriptionlist" [value]="item.id">{{
+            item.name
+          }}</cvui-select-option>
+        </cvui-select>
+      </div>
+
+      <div class="form-group">
+        <label for="requirementList">Please Select Action Item</label>
+        <br />
+        <select
+          ngModel
+          name="requirementList"
+          id="requirementList"
+          #t
+          (change)="getImpactedResources(t.value)"
+        >
+          <option value="">Please Select the Action Item for Assignment</option>
+          <option *ngFor="let item of requirementList" [value]="item.RequirementID">
+            {{ item.Recommendation }}
+          </option>
+        </select>
+      </div>
+
+      <div
+        class="alert alert-info"
+        role="alert"
+        *ngIf="haveActionItem"
+        style="width: 46rem"
+      >
+        <h5>Impacted Azure Resources</h5>
+        {{ impactedResources }}
+      </div>
+
+      <div
+        ngModelGroup="contact"
+        #contact="ngModelGroup"
+        class="form-group"
+      >
+        <div *ngIf="!contact.valid">Invalid Group</div>
+        <div class="row">
+          <div class="col">
+            <label for="firstName">First Name</label>
+            <input
+              required
+              minlength="2"
+              maxlength="100"
+              ngModel
+              name="firstName"
+              pattern="[a-zA-Z ]*"
+              #firstName="ngModel"
+              id="firstName"
+              type="text"
+              (change)="log(firstName)"
+              class="form-control"
+            />
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+              First Name is invalid
+              <div *ngIf="firstName.errors.required">First name is required</div>
+              <div *ngIf="firstName.errors.minlength">Minimum length is {{firstName.errors.minlength.requiredLength}}</div>
+              <div *ngIf="firstName.errors.maxlength">Maximum length is {{firstName.errors.maxlength.requiredLength}}</div>
+            </div>
+          </div>
+
+          <div class="col">
+            <label for="LastName">Last Name</label>
+            <input
+              required
+              minlength="2"
+              maxlength="100"
+              ngModel
+              name="LastName"
+              pattern="[a-zA-Z ]*"
+              #LastName="ngModel"
+              id="LastName"
+              type="text"
+              (change)="log(LastName)"
+              class="form-control"
+            />
+            <div class="alert alert-danger" *ngIf="LastName.touched && !LastName.valid">
+              Last Name is invalid
+              <div *ngIf="LastName.errors.required">Last name is required</div>
+              <div *ngIf="LastName.errors.minlength">Minimum length is {{LastName.errors.minlength.requiredLength}}</div>
+              <div *ngIf="LastName.errors.maxlength">Maximum length is {{LastName.errors.maxlength.requiredLength}}</div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col">
+            <label for="email">Email</label>
+            <input
+              required
+              minlength="1"
+              maxlength="400"
+              ngModel
+              email
+              name="email"
+              #email="ngModel"
+              id="email"
+              type="text"
+              (change)="log(email)"
+              class="form-control"
+            />
+            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+              Email is invalid
+              <div *ngIf="email.errors.required">email is required</div>
+              <div *ngIf="email.errors.minlength">Minimum length is {{email.errors.minlength.requiredLength}}</div>
+              <div *ngIf="email.errors.maxlength">Maximum length is {{email.errors.maxlength.requiredLength}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea
+          ngModel
+          name="comment"
+          id="comment"
+          cols="30"
+          rows="5"
+          #comment="ngModel"
+          (change)="log(comment)"
+          class="form-control"
+        ></textarea>
+      </div>
+      <!-- <p>{{ f.value | json }}</p> -->
+      <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    </form>
+  </div>
+</div>

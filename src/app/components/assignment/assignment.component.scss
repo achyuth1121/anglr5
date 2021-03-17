@@ -1,0 +1,31 @@
+
+
+.assignment-page {
+    background-color: black; 
+    width: 100%; 
+    height: 200vh;
+
+    .assignment-page-image{
+        position: absolute; 
+        top: 10%; 
+        left:30%;
+    }
+
+    input, textarea{
+        background-color:white;
+        color: black;
+    }
+
+    label{
+        background-color:black !important;
+        color: #FFF;
+    }
+
+ 
+    .assignment-form{
+        top: 10%;
+        left: 27%; 
+        position: absolute;
+        width: 46rem;
+    }
+}
