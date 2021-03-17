@@ -1,0 +1,29 @@
+<div class="page-master">
+  <div class="page-master-header-container">
+    <div class="logo-container">
+      <a [routerLink]="['/home']"><img class="logo" src="../../../assets/image/logo-deloitte.png" /></a>
+    </div>
+    <div class="user-container">
+      <span class="app-name"  (click)="homePage()">HOME</span>
+      <span class="app-name" (click)="openReliabilitySummary()">RELIABILITY SUMMARY</span>
+      <span class="app-name" (click)="openReliability()">RELIABILITY</span>
+      <span class="app-name" (click)="openCost()">COST</span>
+      <span class="app-name" (click)="openScore()">SCORE</span>
+      <span class="app-name"(click)="OpenAssignment()">ASSIGNMENT</span>
+    </div>
+  </div>
+  <div class="page-master-content-container" appSeMasterContetHeight>
+    <div class="page-master-content-table">
+      <div class="page-master-route-container" #routeScrollContainer>
+                  <router-outlet></router-outlet>
+        
+        <!-- <div style="text-align: left; height: 50px; margin-left: 5px;">
+          <span>Copyright © 2020 Deloitte. All rights reserved. See </span><span style="color: #03a9f4; cursor: pointer; text-decoration: underline;" (click)="openOSS()">Notices</span><span> and </span><span style="color: #03a9f4; cursor: pointer; text-decoration: underline;" (click)="openSource()">Source Code</span><span> for more information</span>
+        </div>    
+        <div style="text-align: left; height: 50px; margin-left: 5px;">
+          <span>Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited, a UK private company limited by guarantee ("DTTL"), its network of member firms, and their related entities. DTTL and each of its member firms are legally separate and independent entities. DTTL (also referred to as "Deloitte Global") does not provide services to clients. Please see </span><a target="_blank" href="https://www.deloitte.com/about"><span style="color: #03a9f4; cursor: pointer; text-decoration: underline;">www.deloitte.com/about</span></a><span> for a more detailed description of DTTL and its member firms.</span>
+        </div>                  -->
+      </div>
+    </div>
+  </div>
+</div>

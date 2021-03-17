@@ -1,0 +1,41 @@
+<span class="cvui-select-container cvui-select-container--default cvui-select-container--open"
+    [ngStyle]="{position: 'absolute', top: top + 'px', left: left + 'px'}">
+    <span class="cvui-select-dropdown cvui-select-dropdown--below"
+        [ngStyle]="{width: width + 'px'}">
+        <span class="cvui-select-search cvui-select-search--dropdown"
+            *ngIf="!multiple && type == 'filter'">
+            <input class="cvui-select-search__field"
+                #input
+                (input)="onInput($event)"
+                (keydown)="onKeydown($event)"
+                (click)="onInputClick($event)"
+                placeholder="{{getSearchPlaceholder()}}">
+        </span>
+        <span class="cvui-select-results">
+            <ul class="cvui-select-results__options"
+                [style.margin-top]="type == 'filter' ? '0' : '46px'"
+                #optionsList
+                
+                (wheel)="onOptionsWheel($event)">
+                <li
+                    *ngFor="let optionValue of optionValuesFiltered;"
+                    [attr.aria-selected]="optionsDict[optionValue].selected"
+                    [ngClass]="getOptionClass(optionValue)"
+                    [attr.data-value]="optionValue"
+                    (click)="onOptionsClick(optionValue)">
+                    <div *ngIf="optionsDict[optionValue].html && optionsDict[optionValue].html != optionsDict[optionValue].label" [innerHTML]="optionsDict[optionValue].html"></div>
+                    <div class="cvui-select-results__option-label" 
+                        *ngIf="!optionsDict[optionValue].html || optionsDict[optionValue].html == optionsDict[optionValue].label"
+                        [innerHTML]="optionsDict[optionValue].label | highlight:searchTerm">
+                    </div>
+                    <span *ngIf="optionsDict[optionValue].selected"><!-- Tick goes here --></span>
+                </li>
+                <li 
+                    *ngIf="optionValuesFiltered.length === 0"
+                    [ngClass]="getOptionClass(null)">
+                    {{MSG_NOT_FOUND}}
+                </li>
+            </ul>
+        </span>
+    </span>
+</span>
