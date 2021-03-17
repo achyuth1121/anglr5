@@ -1,0 +1,120 @@
+.home{
+     height: 100%; 
+}
+.two{
+   display: block;
+}
+.divimg{
+   //max-width:50%;
+   width: 50%;
+   float: left;
+   //padding: 20px;
+   //border: 2px solid red;
+   // border: 2px solid red;
+   //  border: 5px solid darkblue;
+   //  height: 350px;
+  // width: 40%;
+}
+.divimg2{
+   //max-width:50%;
+  // width: 40%;
+  display: block;
+ width:40%;
+  float: right;
+ //  padding: 20px;
+   //border: 2px solid red;
+   // border: 5px solid darkblue;
+   // height: 150px;
+   // width: 200px;
+}
+// .abc{
+//    //display:inline;
+//    border: 5px solid yellow;
+//    height: 350px;
+//   width: 10%;
+// }
+.imgw{
+   margin-top: 138px;
+   width: 484px;
+   height: 312px;
+  // padding-left: -18px;
+   margin-left: 150px;
+  // background-image: url("../../../assets/image/Laptop.png");
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+ //width: 100vw; 
+   //height: 100vh;
+  // width:50vw;
+ // margin-right: 20px;;
+  // max-width:60%;
+ //  position: fixed;
+  // height: auto;
+ // height:20vh;
+//   border: 5px solid darkblue;
+//   height: 150px;
+//   width: 200px;
+}
+.bluebackground{
+     
+   background-image: url("../../../assets/image/Background.png");
+   //background-repeat: no-repeat;
+  //background-attachment: fixed;
+}
+.textpara{
+   padding-top: 9px;
+}
+.divimg1{
+  // width:100%;
+   display: flex;
+   background-color: lightgreen;
+   height:23%;
+}
+.home-img-text{
+   display: block;
+}
+.heading{
+   font-family: 'Times New Roman', Times, serif;
+   letter-spacing: 3px;
+   font-size: 56px;
+}
+.Dttl{
+   padding-top: 40px;
+   padding-left: 224px;
+   //float: right;
+   font-family: "Times New Roman", Times, serif;
+   font-weight: bold;
+
+}
+// .reliablity{
+//    padding-left: 90px;
+// }
+.portal{
+   padding-left: 166px;
+}
+.lets{
+   padding-left: 88px;
+}
+.wel{
+   padding-left: 96px;
+}
+.can-find{
+   padding-left: 100px;
+}
+.detail{
+   padding-left: 90px;
+}
+.benefit{
+   padding-left: 160px;
+}
+.btn-learn-more{
+   float: right;
+  right: 115px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  position: absolute;
+  padding: 2px 0px 0px 0px;
+  border: 0px solid;
+ 
+}
