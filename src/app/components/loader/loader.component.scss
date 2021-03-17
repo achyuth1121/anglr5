@@ -1,0 +1,101 @@
+$BARS_NUMBER: 24;
+$ANIMATION_TIME: 1.2;
+$degrees_per_bar: 360 / $BARS_NUMBER;
+$time_per_bar: $ANIMATION_TIME / $BARS_NUMBER;
+$color10: #fff;
+$color40: #86bc25;
+$index1: 20;
+@keyframes loader-animation {
+  0%,
+  39%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.loader {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  z-index: $index1;
+  .icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .loader-icon {
+    margin: 50% auto;
+    width: 64px;
+    height: 64px;
+    position: relative;
+    .loader-bar {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      &:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 3px;
+        height: 10px;
+        background-color: $color40;
+        animation: loader-animation 1.2s infinite ease-in-out both;
+      }
+    }
+    @for $i from 1 through $BARS_NUMBER {
+      .loader-bar#{$i} {
+        transform: rotate(#{$degrees_per_bar * $i}deg);
+        &:before {
+          animation-delay: -#{$time_per_bar * $i}s;
+        }
+      }
+    }
+  }
+}
+
+.inline-loader {
+  z-index: $index1;
+  .icon-wrapper {
+    position: inherit;
+  }
+  .loader-icon {
+    top: 15px;
+    left: 6px;
+    position: relative;
+    display: inline;
+    .loader-bar {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      &:before {
+        content: '';
+        display: block;
+        margin: 4px auto;
+        width: 1px;
+        height: 4px;
+        background-color: $color40;
+        animation: loader-animation 1.2s infinite ease-in-out both;
+      }
+    }
+    @for $i from 1 through $BARS_NUMBER {
+      .loader-bar#{$i} {
+        transform: rotate(#{$degrees_per_bar * $i}deg);
+        &:before {
+          animation-delay: -#{$time_per_bar * $i}s;
+        }
+      }
+    }
+  }
+}

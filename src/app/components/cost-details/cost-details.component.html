@@ -1,0 +1,76 @@
+<div style="background-color: black; width: 100%; height: 100vh;"> 
+    <img style="position: absolute; top: 20%; left:30%;" src="../../../assets/image/Background.png" />
+    <p-progressBar [value]="value" *ngIf="isLoading" style="position: absolute; top: 10%; left: 20px; width: 95vw;"></p-progressBar>
+    <div *ngIf="!isLoading">
+        <div style="top: 10%; left: 10%; position: absolute;">
+            <span style="color: white; font-size: 20px;">A LIST OF </span>
+            <span style="color: chartreuse; font-size: 20px;"> COST RECOMMENDATIONS</span>
+        </div>
+        <div style="top: 15%; left: 10%; position: absolute;">
+            <cvui-select style="width: 50px;" type="filter" [(selectedValues)]="selectedSubscription" (selectedValuesChange)="getCostDetails()" *ngIf="istargetApp">
+                <cvui-select-option *ngFor="let item of subscriptionlist" [value]="item.id">{{item.name}}</cvui-select-option>
+            </cvui-select>
+        
+        </div>
+
+        <div style="top: 18%; left: 10%; position: absolute;">
+            <apx-chart
+                [series]="series"
+                [chart]="chart"
+                [plotOptions]="plotOptions"
+                [labels]="lables">
+            </apx-chart>
+        </div>
+
+        <div style="top: 18%; left: 25%; position: absolute;">
+            <apx-chart
+                [series]="series1"
+                [chart]="chart1"
+                [plotOptions]="plotOptions1"
+                [labels]="lables1">
+            </apx-chart>
+        </div>
+
+        <div style="top: 18%; left: 40%; position: absolute;">
+            <apx-chart
+                [series]="series2"
+                [chart]="chart2"
+                [plotOptions]="plotOptions2"
+                [labels]="lables2">
+            </apx-chart>
+        </div>
+
+        <div style="top: 15%; left: 70%; position: absolute; background-color: rgba(134, 188, 36);">
+            <apx-chart
+                [series]="barGraphSeries"
+                [chart]="barGraphChart"
+                [plotOptions]="barGraphPlotOptions"
+                [xaxis]="barGraphXaxis">
+            </apx-chart>
+        </div>
+
+        <div style="top: 50%; left: 10%; position: absolute; margin-right: 50px; max-height: 290px; overflow-x: scroll; overflow-y: scroll;">
+            <p-table [value]="subscriptionDetails" styleClass="p-datatable-striped">
+                <ng-template pTemplate="header">
+                    <tr style="height: 60px; opacity: 0.6;">
+                        <th style="text-align: left; padding: 10px; background-color: rgba(134, 188, 36)!important; color: currentcolor; font-size: 20px;">DTTL Application ID</th>
+                        <th style="text-align: left; background-color: rgba(134, 188, 36)!important; color: currentcolor; font-size: 20px;">Impacted Azure Resource</th>
+                        <th style="text-align: left; background-color: rgba(134, 188, 36)!important; color: currentcolor; font-size: 20px;">Reliability Recommendation</th>
+                        <th style="text-align: left; background-color: rgba(134, 188, 36)!important; color: currentcolor; font-size: 20px;">DTTL Reliability Requirement</th>
+                        <th style="text-align: left; background-color: rgba(134, 188, 36)!important; color: currentcolor; font-size: 20px;">Solution/Github Resources</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-subscription>
+                    <tr>
+                        <td style="background-color: white; text-align: left; padding: 10px;">{{subscription.ApplicationID}}</td>
+                        <td style="background-color: white;">{{subscription.ImpactedAzureResource}}</td>
+                        <td style="background-color: white;">{{subscription.ReliabilityRecommendation}}</td>
+                        <td style="background-color: white;">{{subscription.GlobalReliabilityRequirement}}</td>
+                        <td style="background-color: white;"><img style="margin-left: 50px;" src="../../../assets/image/link.png" /></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+
+</div>
